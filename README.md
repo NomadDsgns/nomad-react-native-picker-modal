@@ -14,6 +14,7 @@ Custom React Native modal with picker input included
     - selectedValue (optional) - default value to show as selected on modal open (defaults to first item in array if not provided)
     - visible (required) - state variable to dictate whether modal is visible or not (true or false)
     - handleChange (required) - function to handle changing of value selected
+    - handleSubmit (required) - function for handling the submitting of the modal
 
 
 ### Example usage ###
