@@ -2,7 +2,7 @@
 Custom React Native modal with picker input included
 
 ## Instructions for Use ##
-1. Install FontAwesome: npm install -save @react-native-picker/picker
+1. Install picker module: npm install -save @react-native-picker/picker
 2. Clone Component to project:
     - Command Line: git clone https://github.com/NomadDsgns/nomad-react-native-picker-modal.git
     - -or- Copy and paste code into new file
@@ -13,12 +13,21 @@ Custom React Native modal with picker input included
     - values (required) - Array of value strings to assign to each items value
     - selectedValue (optional) - default value to show as selected on modal open (defaults to first item in array if not provided)
     - visible (required) - state variable to dictate whether modal is visible or not (true or false)
-    - handleChange (required) - function to handle changing of value selected
     - handleSubmit (required) - function for handling the submitting of the modal
 
 
 ### Example usage ###
+Component will pass the selected value to the `handleSubmit` function upon user submitting the modal.
 
 ```
+const [modalVisible, setModalVisible] = useState(true);
 
+<NomadPickerModal label="Select State"
+                  values={[ 'AL', 'AK', 'ID' ]}
+                  selectedValue='AK'
+                  visible={modalVisible}
+                  handleSubmit={(value) => {
+                      console.log(value);
+                      setModalVisible(false)
+                  }} />
 ```

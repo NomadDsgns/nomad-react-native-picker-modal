@@ -1,11 +1,10 @@
-import React from 'react';
-import { View, Text, Modal, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Modal, StyleSheet, Button } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
+export default function({ label, values, selectedValue, visible, handleSubmit }) {
+    const [ pickerValue, setPickerValue ] = useState(selectedValue || values[0]);
 
-import Button from './Button';
-
-function PickerModal({ label, values, selectedValue, visible, handleChange, handleSubmit }) {
     return (
         <Modal animationType="fade"
                 transparent={true}
@@ -14,23 +13,19 @@ function PickerModal({ label, values, selectedValue, visible, handleChange, hand
                 <View style={styles.modalView}>
                     <Text style={{marginBottom: 15}}>{label}</Text>
                     <Picker style={styles.picker}
-                    selectedValue={selectedValue ? selectedValue : values[0]}
-                            onValueChange={handleChange}>
+                            selectedValue={selectedValue}
+                            onValueChange={setPickerValue}>
                         { values.map((value, index) => {
                                 return <Picker.Item label={value} value={value} key={`${index}_${value}`}/>
                             })
                         }  
                     </Picker>
-                    <Button onPress={() => {
-                        handleSubmit(!visible);
-                    }}>Submit</Button>
+                    <Button onPress={() => handleSubmit(pickerValue)}>Submit</Button>
                 </View>
             </View>
         </Modal>
     );
 }
-
-export default PickerModal;
 
 const styles = StyleSheet.create({
     modalView: {
