@@ -5,7 +5,7 @@ import { Picker } from '@react-native-picker/picker';
 
 import Button from './Button';
 
-function PickerModal({ label, values, selectedValue, visible, handleChange, handleCancel }) {
+function PickerModal({ label, values, selectedValue, visible, handleChange, handleSubmit }) {
     return (
         <Modal animationType="fade"
                 transparent={true}
@@ -22,7 +22,7 @@ function PickerModal({ label, values, selectedValue, visible, handleChange, hand
                         }  
                     </Picker>
                     <Button onPress={() => {
-                        handleCancel(!visible);
+                        handleSubmit(!visible);
                     }}>Submit</Button>
                 </View>
             </View>
